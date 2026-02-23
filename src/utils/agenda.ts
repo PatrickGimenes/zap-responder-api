@@ -10,7 +10,7 @@ export async function checkchats() {
     const db = getDb();
     const now = Date.now();
     
-    // Seleciona conversas com mais de 1 hora que ainda foram finalizadas
+    // Seleciona conversas com mais de 1 hora que ainda não foram finalizadas
     const chats = await db.all(
         'SELECT * FROM tb_chat WHERE created_at <= ? AND active = 1',
         [now - TASK_DELAY]
