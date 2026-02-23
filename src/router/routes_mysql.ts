@@ -3,6 +3,14 @@ import { pool } from "../database/conn";
 
 const router_empresa = Router();
 
+router_empresa.get("/ping", async (_, res) => {
+  res.status(200).json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+  });
+});
+
 router_empresa.post("/empresa", async (req, res) => {
   const empresa = String(req.body.empresa || "").trim();
   try {
